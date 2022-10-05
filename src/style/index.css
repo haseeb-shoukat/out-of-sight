@@ -22,8 +22,20 @@ body {
 }
 
 .wave {
+  position: relative;
   font-size: 0;
   background-color: #002233;
+}
+
+.secondary-heading {
+  position: absolute;
+  font-size: 3rem;
+  font-family: "Special Elite";
+  color: white;
+  text-align: center;
+  width: 100%;
+  bottom: 4rem;
+
 }
 
 .main-heading {
@@ -34,4 +46,42 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.levels {
+  box-sizing: border-box;
+  display: flex;
+  height: 30rem;
+  width: 100%;
+  gap: 2rem;
+  padding: 0 2rem 2rem 2rem;
+  background-color: #002233;
+}
+
+.level-card, .level-img {
+  height: 100%;
+  width: 100%;
+}
+
+.level-card {
+  border: 2px solid white;
+  color: white;
+}
+
+.level-card:hover {
+  border: 4px solid #22c55e;
+  cursor: pointer;
+  color: #22c55e;
+} 
+
+.level-img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.level-name {
+  font-size: 2rem;
+  font-family: "Special Elite";
+  text-align: center;
+  padding: 1rem 0 4rem 0;
 }
