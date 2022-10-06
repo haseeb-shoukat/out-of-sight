@@ -154,6 +154,7 @@ a {
 
 .main-container {
   position: relative;
+  overflow: hidden;
 }
 
 .main-image {
