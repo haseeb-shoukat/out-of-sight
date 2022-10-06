@@ -160,3 +160,7 @@ a {
 .main-image {
   cursor: url("../images/crosshair.png"), auto;
 }
+
+.found {
+  color: #22c55e;
+}
