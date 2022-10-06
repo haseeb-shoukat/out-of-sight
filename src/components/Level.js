@@ -1,19 +1,42 @@
 import { useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import db from "./firebase";
 
 const Level = ({ characters, image }) => {
   const [menu, showMenu] = useState(false);
   const [coords, setCoords] = useState([0, 0]);
+  const [imageCoords, setImageCoords] = useState([0, 0]);
 
   const registerClick = (e) => {
     const rect = e.target.getBoundingClientRect();
-    showMenu(true);
-    setCoords([e.clientX - rect.left, e.clientY - rect.top]);
+    const [x, y] = [e.clientX - rect.left + 16, e.clientY - rect.top + 16];
+    if (!menu) showMenu(true);
+    setCoords([x, y]);
+    setImageCoords([(x / e.target.width) * 100, (y / e.target.height) * 100]);
   };
 
-  const registerGuess = (e, key) => {
+  const registerGuess = async (e, key) => {
     e.stopPropagation();
-    console.log(key);
-    console.log(coords);
+    const docSnap = await getDoc(doc(db, "characters", key));
+
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      const [x, y] = imageCoords;
+
+      if (
+        x >= data.startX &&
+        x <= data.endX &&
+        y >= data.startY &&
+        y <= data.endY
+      ) {
+        alert("Found");
+      } else {
+        alert("Not Found");
+      }
+    } else {
+      // doc.data() will be undefined in this case
+      alert("Document not found! Please refresh the page.");
+    }
   };
 
   return (
@@ -31,15 +54,20 @@ const Level = ({ characters, image }) => {
           })}
         </div>
       </div>
-      <div className="main-container" onClick={registerClick}>
-        <img className="main-image" width="100%" src={image} />
+      <div className="main-container">
+        <img
+          className="main-image"
+          width="100%"
+          src={image}
+          onClick={registerClick}
+        />
         {menu ? (
           <div
             className="menu"
             style={{
               position: "absolute",
-              top: `${coords[1] + 32}px`,
-              left: `${coords[0] + 32}px`,
+              top: `${coords[1] + 16}px`,
+              left: `${coords[0] + 16}px`,
             }}
           >
             {characters.map((character) => (
