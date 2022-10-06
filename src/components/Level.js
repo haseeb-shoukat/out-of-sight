@@ -6,6 +6,7 @@ const Level = ({ characters, image }) => {
   const [menu, showMenu] = useState(false);
   const [coords, setCoords] = useState([0, 0]);
   const [imageCoords, setImageCoords] = useState([0, 0]);
+  const [found, updateFound] = useState([]);
 
   const registerClick = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -30,6 +31,7 @@ const Level = ({ characters, image }) => {
         y <= data.endY
       ) {
         alert("Found");
+        updateFound((x) => [...x, key]);
       } else {
         alert("Not Found");
       }
@@ -45,8 +47,10 @@ const Level = ({ characters, image }) => {
         <div className="nav-name">Out Of Sight</div>
         <div className="characters">
           {characters.map((character) => {
+            let c = "character";
+            if (found.includes(character.key)) c = "character found";
             return (
-              <div key={character.key} className="character">
+              <div key={character.key} className={c}>
                 <img className="character-img" src={character.img} />
                 <div className="character-name">{character.name}</div>
               </div>
@@ -70,15 +74,17 @@ const Level = ({ characters, image }) => {
               left: `${coords[0] + 16}px`,
             }}
           >
-            {characters.map((character) => (
-              <div
-                key={character.key}
-                className="menu-item"
-                onClick={(e) => registerGuess(e, character.key)}
-              >
-                {character.name}
-              </div>
-            ))}
+            {characters.map((character) =>
+              found.includes(character.key) ? null : (
+                <div
+                  key={character.key}
+                  className="menu-item"
+                  onClick={(e) => registerGuess(e, character.key)}
+                >
+                  {character.name}
+                </div>
+              )
+            )}
           </div>
         ) : null}
       </div>
