@@ -17,22 +17,30 @@ const Home = () => {
         </svg>
       </div>
       <div className="levels">
-        <div className="level-card">
-          <img src={robo} className="level-img" />
-          <div className="level-name">Robo City</div>
-        </div>
-        <div className="level-card">
-          <img src={post} className="level-img" />
-          <div className="level-name">Post Apocalypse</div>
-        </div>
-        <div className="level-card">
-          <img src={underground} className="level-img" />
-          <div className="level-name">Underground Base</div>
-        </div>
-        <div className="level-card">
-          <img src={space} className="level-img" />
-          <div className="level-name">Space Frenzy</div>
-        </div>
+        <a href="/robo-city">
+          <div className="level-card">
+            <img src={robo} className="level-img" />
+            <div className="level-name">Robo City</div>
+          </div>
+        </a>
+        <a href="/post-apocalypse">
+          <div className="level-card">
+            <img src={post} className="level-img" />
+            <div className="level-name">Post Apocalypse</div>
+          </div>
+        </a>
+        <a href="/underground-base">
+          <div className="level-card">
+            <img src={underground} className="level-img" />
+            <div className="level-name">Underground Base</div>
+          </div>
+        </a>
+        <a href="/space-frenzy">
+          <div className="level-card">
+            <img src={space} className="level-img" />
+            <div className="level-name">Space Frenzy</div>
+          </div>
+        </a>
       </div>
     </div>
   );
