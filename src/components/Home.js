@@ -1,7 +1,7 @@
-import post from "../images/post-apocalypse.jpg";
-import robo from "../images/robo-city.jpg";
-import space from "../images/space.jpg";
-import underground from "../images/underground-base.jpg";
+import post from "../images/post/post-apocalypse.jpg";
+import robo from "../images/robo/robo-city.jpg";
+import space from "../images/space/space.jpg";
+import underground from "../images/underground/underground-base.jpg";
 
 const Home = () => {
   return (
