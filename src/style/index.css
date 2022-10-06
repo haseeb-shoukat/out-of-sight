@@ -13,6 +13,10 @@ html, body, #root {
   height: 100%;
 }
 
+* {
+  font-family: "Special Elite";
+}
+
 .home {
   background-color: white;
 }
@@ -30,7 +34,6 @@ body {
 .secondary-heading {
   position: absolute;
   font-size: 3rem;
-  font-family: "Special Elite";
   color: white;
   text-align: center;
   width: 100%;
@@ -39,7 +42,6 @@ body {
 }
 
 .main-heading {
-  font-family: "Special Elite";
   font-size: 5rem;
   padding-top: 4rem;
   font-weight: bold;
@@ -81,7 +83,46 @@ body {
 
 .level-name {
   font-size: 2rem;
-  font-family: "Special Elite";
   text-align: center;
   padding: 1rem 0 4rem 0;
+}
+
+.nav-bar {
+  background-color: #002233;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-name {
+  font-size: 3rem;
+  padding: 1rem;
+  color: white;
+}
+
+.characters {
+  display: flex;
+}
+
+.character {
+  background-color: #002233;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+} 
+
+.character:hover {
+  color: #22c55e;
+  cursor: pointer;
+}
+
+.character-img {
+  width: 6rem;
+  height: 7rem;
+  object-fit: contain;
+}
+
+.character-name {
+  font-size: 1.2rem;
+  padding: 0.5rem;
 }
