@@ -132,3 +132,30 @@ a {
   height: 100%;
   width: 100%;
 }
+
+.menu {
+  background-color: #002233;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  border: 1px solid black;
+}
+
+.menu-item {
+  padding: 1.2rem;
+}
+
+.menu-item:hover {
+  background-color: #0b384f;
+  cursor: pointer;
+}
+
+.main-container {
+  position: relative;
+}
+
+.main-image {
+  cursor: url("../images/crosshair.png"), auto;
+}
