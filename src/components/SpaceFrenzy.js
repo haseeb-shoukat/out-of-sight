@@ -4,13 +4,16 @@ import forrest from "../images/space/characters/forrest-gump.png";
 import sonic from "../images/space/characters/sonic.png";
 import lara from "../images/space/characters/lara-croft.png";
 import Level from "./Level";
-import { v4 as uuidv4 } from "uuid";
 
 const characters = [
-  { key: uuidv4(), name: "Aang", img: aang },
-  { key: uuidv4(), name: "Forrest Gump", img: forrest },
-  { key: uuidv4(), name: "Sonic", img: sonic },
-  { key: uuidv4(), name: "Lara Croft", img: lara },
+  { key: "456b914e33be48fcb86c43b7658475d7", name: "Aang", img: aang },
+  {
+    key: "fd6dd0d474ee406ba227a9099d02573b",
+    name: "Forrest Gump",
+    img: forrest,
+  },
+  { key: "831de51b4e5f4796aaa32f8ef533ad8e", name: "Sonic", img: sonic },
+  { key: "5eb736d1677845818ffc0fce441c9432", name: "Lara Croft", img: lara },
 ];
 
 const SpaceFrenzy = <Level characters={characters} image={Space} />;

@@ -4,13 +4,12 @@ import jason from "../images/robo/characters/jason.png";
 import meg from "../images/robo/characters/meg.png";
 import mojo from "../images/robo/characters/mojo.png";
 import Level from "./Level";
-import { v4 as uuidv4 } from "uuid";
 
 const characters = [
-  { key: uuidv4(), name: "Batman", img: batman },
-  { key: uuidv4(), name: "Jason", img: jason },
-  { key: uuidv4(), name: "Meg", img: meg },
-  { key: uuidv4(), name: "Mojo", img: mojo },
+  { key: "367589e898274b928b6e443e5c63c133", name: "Batman", img: batman },
+  { key: "7f9368b0997b488f946a40bc7a41f21e", name: "Jason", img: jason },
+  { key: "fdeccabaee4741dcaf9a1640a6426303", name: "Meg", img: meg },
+  { key: "faa9678449b14a24a2a22ad5d7bdd24e", name: "Mojo", img: mojo },
 ];
 
 const RoboCity = <Level characters={characters} image={Robo} />;
