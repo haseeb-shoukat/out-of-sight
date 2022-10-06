@@ -44,7 +44,9 @@ const Level = ({ characters, image }) => {
   return (
     <div>
       <div className="nav-bar">
-        <div className="nav-name">Out Of Sight</div>
+        <a href="/">
+          <div className="nav-name">Out Of Sight</div>
+        </a>
         <div className="characters">
           {characters.map((character) => {
             let c = "character";
