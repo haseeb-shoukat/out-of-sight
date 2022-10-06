@@ -5,7 +5,6 @@ const Level = ({ characters, image }) => {
         <div className="nav-name">Out Of Sight</div>
         <div className="characters">
           {characters.map((character) => {
-            console.log(character);
             return (
               <div key={character.key} className="character">
                 <img className="character-img" src={character.img} />
