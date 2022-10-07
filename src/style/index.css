@@ -134,6 +134,13 @@ a {
   width: 100%;
 }
 
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
 .menu {
   background-color: #002233;
   display: flex;
