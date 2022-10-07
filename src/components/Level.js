@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import db from "./firebase";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Level = ({ characters, image }) => {
   const [menu, showMenu] = useState(false);
@@ -18,6 +20,7 @@ const Level = ({ characters, image }) => {
 
   const registerGuess = async (e, key) => {
     e.stopPropagation();
+    showMenu(false);
     const docSnap = await getDoc(doc(db, "characters", key));
 
     if (docSnap.exists()) {
@@ -30,19 +33,26 @@ const Level = ({ characters, image }) => {
         y >= data.startY &&
         y <= data.endY
       ) {
-        alert("Found");
+        toast.success("Found! You are doing great");
         updateFound((x) => [...x, key]);
       } else {
-        alert("Not Found");
+        toast.error("Wrong! Keep looking");
       }
     } else {
       // doc.data() will be undefined in this case
-      alert("Document not found! Please refresh the page.");
+      toast.error("Document not found! Please refresh the page.");
     }
   };
 
   return (
     <div>
+      <ToastContainer
+        limit={2}
+        position="top-center"
+        autoClose={1500}
+        theme="dark"
+        newestOnTop
+      />
       <div className="nav-bar">
         <a href="/">
           <div className="nav-name">Out Of Sight</div>
