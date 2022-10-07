@@ -21,6 +21,7 @@ const Level = ({ characters, image }) => {
   const registerGuess = async (e, key) => {
     e.stopPropagation();
     showMenu(false);
+    if (found.includes(key)) return;
     const docSnap = await getDoc(doc(db, "characters", key));
 
     if (docSnap.exists()) {
@@ -54,9 +55,10 @@ const Level = ({ characters, image }) => {
         newestOnTop
       />
       <div className="nav-bar">
-        <a href="/">
-          <div className="nav-name">Out Of Sight</div>
-        </a>
+        <div className="nav-name">
+          <a href="/">Out Of Sight</a>
+        </div>
+
         <div className="characters">
           {characters.map((character) => {
             let c = "character";
