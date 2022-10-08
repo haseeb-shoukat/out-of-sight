@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import db from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Overlay from "./Overlay";
 
 const Level = ({ characters, image }) => {
   const [menu, showMenu] = useState(false);
@@ -10,6 +11,8 @@ const Level = ({ characters, image }) => {
   const [imageCoords, setImageCoords] = useState([0, 0]);
   const [found, updateFound] = useState([]);
   const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
+  const [end, setEnd] = useState(false);
+  let interval;
 
   useEffect(() => {
     const tick = () => {
@@ -22,7 +25,7 @@ const Level = ({ characters, image }) => {
       });
     };
 
-    const interval = setInterval(tick, 1000);
+    interval = setInterval(tick, 1000);
 
     return () => {
       clearInterval(interval);
@@ -61,6 +64,7 @@ const Level = ({ characters, image }) => {
         y <= data.endY
       ) {
         toast.success("Found! You are doing great");
+        if (found.length >= 3) gameOver();
         updateFound((x) => [...x, key]);
       } else {
         toast.error("Wrong! Keep looking");
@@ -69,6 +73,11 @@ const Level = ({ characters, image }) => {
       // doc.data() will be undefined in this case
       toast.error("Document not found! Please refresh the page.");
     }
+  };
+
+  const gameOver = () => {
+    clearInterval(interval);
+    setEnd(true);
   };
 
   return (
@@ -131,6 +140,11 @@ const Level = ({ characters, image }) => {
           </div>
         ) : null}
       </div>
+      {end ? (
+        <Overlay
+          score={`${format(time.h)}:${format(time.m)}:${format(time.s)}`}
+        />
+      ) : null}
     </div>
   );
 };
