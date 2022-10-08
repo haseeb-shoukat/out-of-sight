@@ -186,3 +186,34 @@ a:active {
   border-radius: 5px;
   border-top: none;
 }
+
+.overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.774);
+}
+
+.overlay-card {
+  height: 70%;
+  width: 70%;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: rgb(229, 228, 228);
+}
+
+.overlay-heading {
+  font-size: 3rem;
+}
+
+.overlay-text {
+  font-size: 2rem;
+}
