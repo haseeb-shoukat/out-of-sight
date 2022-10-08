@@ -202,20 +202,41 @@ a:active {
 }
 
 .overlay-card {
-  height: 70%;
-  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
   padding: 2rem;
+  gap: 2rem;
   box-sizing: border-box;
   border-radius: 5px;
   background-color: rgb(229, 228, 228);
+  width: 70%;
+  height: 70%;
 }
 
-.overlay-heading {
+.my-score, .leaderboard {
+  flex-grow: 1;
+  flex-basis: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+.my-score {
+  justify-content: center;
+  align-items: center;
+}
+
+.my-score-heading, .leaderboard-heading {
   font-size: 3rem;
 }
 
-.overlay-text {
-  font-size: 2rem;
+.my-score-text {
+  font-size: 1.8rem;
+}
+
+.leaderboard-text {
+  font-size: 1.5rem;
 }
 
 .loading {
@@ -225,4 +246,54 @@ a:active {
   align-items: center;
   color: white;
   font-size: 2rem;
+}
+
+.over-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.over-btn {
+  font-size: 1rem;
+  padding: 5px 15px;
+  font-weight: bold;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transition: background-color 0.15s ease-in-out 0s;
+  border: 1px solid rgb(234, 234, 234);
+  width: 100%;
+}
+
+.over-btn:hover {
+  cursor: pointer;
+  background-color: #212121;
+}
+
+.high-score-btn {
+  width: fit-content;
+  font-size: 1.2rem;
+  margin: 0 1rem;
+}
+
+.high-score-text {
+  font-size: 1.5rem;
+}
+
+label, input[type="text"] {
+  font-size: 1.5rem;
+}
+
+.high-score {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: #124559;
+}
+
+.user-score {
+  font-size: 1.5rem;
 }
