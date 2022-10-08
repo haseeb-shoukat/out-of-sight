@@ -4,9 +4,8 @@ import db from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Overlay from "./Overlay";
-import { clear } from "@testing-library/user-event/dist/clear";
 
-const Level = ({ characters, image }) => {
+const Level = ({ characters, image, levelKey }) => {
   const [menu, showMenu] = useState(false);
   const [coords, setCoords] = useState([0, 0]);
   const [imageCoords, setImageCoords] = useState([0, 0]);
@@ -142,9 +141,7 @@ const Level = ({ characters, image }) => {
         ) : null}
       </div>
       {end ? (
-        <Overlay
-          score={`${format(time.h)}:${format(time.m)}:${format(time.s)}`}
-        />
+        <Overlay levelKey={levelKey} score={time} format={format} />
       ) : null}
     </div>
   );
