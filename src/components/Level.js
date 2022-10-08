@@ -12,6 +12,7 @@ const Level = ({ characters, image, levelKey }) => {
   const [found, updateFound] = useState([]);
   const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
   const [end, setEnd] = useState(false);
+  const [locations, setLocations] = useState([]);
 
   useEffect(() => {
     const tick = () => {
@@ -33,6 +34,23 @@ const Level = ({ characters, image, levelKey }) => {
     };
   }, [end]);
 
+  useEffect(() => {
+    const arr = [];
+
+    characters.forEach(async (character) => {
+      const docSnap = await getDoc(doc(db, "characters", character.key));
+
+      if (docSnap.exists()) {
+        arr.push({ key: character.key, location: docSnap.data() });
+      } else {
+        // doc.data() will be undefined in this case
+        toast.error("Document not found! Please refresh the page.");
+      }
+    });
+
+    setLocations(arr);
+  }, []);
+
   const format = (n) => {
     return n.toLocaleString("en-US", {
       minimumIntegerDigits: 2,
@@ -48,31 +66,27 @@ const Level = ({ characters, image, levelKey }) => {
     setImageCoords([(x / e.target.width) * 100, (y / e.target.height) * 100]);
   };
 
-  const registerGuess = async (e, key) => {
+  const registerGuess = (e, key) => {
     e.stopPropagation();
     showMenu(false);
     if (found.includes(key)) return;
-    const docSnap = await getDoc(doc(db, "characters", key));
 
-    if (docSnap.exists()) {
-      const data = docSnap.data();
-      const [x, y] = imageCoords;
+    const character = locations.find((location) => key === location.key);
 
-      if (
-        x >= data.startX &&
-        x <= data.endX &&
-        y >= data.startY &&
-        y <= data.endY
-      ) {
-        toast.success("Found! You are doing great");
-        if (found.length >= 3) gameOver();
-        updateFound((x) => [...x, key]);
-      } else {
-        toast.error("Wrong! Keep looking");
-      }
+    const data = character.location;
+    const [x, y] = imageCoords;
+
+    if (
+      x >= data.startX &&
+      x <= data.endX &&
+      y >= data.startY &&
+      y <= data.endY
+    ) {
+      toast.success("Found! You are doing great");
+      if (found.length >= 3) gameOver();
+      updateFound((x) => [...x, key]);
     } else {
-      // doc.data() will be undefined in this case
-      toast.error("Document not found! Please refresh the page.");
+      toast.error("Wrong! Keep looking");
     }
   };
 
