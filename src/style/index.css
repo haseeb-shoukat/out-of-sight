@@ -217,3 +217,12 @@ a:active {
 .overlay-text {
   font-size: 2rem;
 }
+
+.loading {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+}
