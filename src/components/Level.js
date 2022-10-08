@@ -4,6 +4,7 @@ import db from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Overlay from "./Overlay";
+import { clear } from "@testing-library/user-event/dist/clear";
 
 const Level = ({ characters, image }) => {
   const [menu, showMenu] = useState(false);
@@ -12,7 +13,6 @@ const Level = ({ characters, image }) => {
   const [found, updateFound] = useState([]);
   const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
   const [end, setEnd] = useState(false);
-  let interval;
 
   useEffect(() => {
     const tick = () => {
@@ -25,12 +25,14 @@ const Level = ({ characters, image }) => {
       });
     };
 
-    interval = setInterval(tick, 1000);
+    const interval = setInterval(tick, 1000);
+
+    if (end) clearInterval(interval);
 
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [end]);
 
   const format = (n) => {
     return n.toLocaleString("en-US", {
@@ -76,7 +78,6 @@ const Level = ({ characters, image }) => {
   };
 
   const gameOver = () => {
-    clearInterval(interval);
     setEnd(true);
   };
 
