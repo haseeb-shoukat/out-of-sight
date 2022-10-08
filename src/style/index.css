@@ -172,3 +172,17 @@ a:active {
 .found {
   color: #22c55e;
 }
+
+.timer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  color: white;
+  font-size: 2rem;
+  padding: 1rem;
+  background-color: #002233;
+  border: 2px solid white;
+  border-radius: 5px;
+  border-top: none;
+}
