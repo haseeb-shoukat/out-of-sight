@@ -49,7 +49,7 @@ const Level = ({ characters, image, levelKey }) => {
     });
 
     setLocations(arr);
-  }, []);
+  }, [characters]);
 
   const format = (n) => {
     return n.toLocaleString("en-US", {
