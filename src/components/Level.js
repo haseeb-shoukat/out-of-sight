@@ -83,21 +83,17 @@ const Level = ({ characters, image, levelKey }) => {
       y <= data.endY
     ) {
       toast.success("Found! You are doing great");
-      if (found.length >= 3) gameOver();
+      if (found.length >= 3) setEnd(true);
       updateFound((x) => [...x, key]);
     } else {
       toast.error("Wrong! Keep looking");
     }
   };
 
-  const gameOver = () => {
-    setEnd(true);
-  };
-
   return (
     <div>
       <ToastContainer
-        limit={2}
+        limit={1}
         position="top-center"
         autoClose={1500}
         theme="dark"
@@ -121,39 +117,43 @@ const Level = ({ characters, image, levelKey }) => {
           })}
         </div>
       </div>
-      <div className="main-container">
-        <div className="timer">
-          {format(time.h)}:{format(time.m)}:{format(time.s)}
-        </div>
-        <img
-          className="main-image"
-          width="100%"
-          src={image}
-          onClick={registerClick}
-        />
-        {menu ? (
-          <div
-            className="menu"
-            style={{
-              position: "absolute",
-              top: `${coords[1] + 16}px`,
-              left: `${coords[0] + 16}px`,
-            }}
-          >
-            {characters.map((character) =>
-              found.includes(character.key) ? null : (
-                <div
-                  key={character.key}
-                  className="menu-item"
-                  onClick={(e) => registerGuess(e, character.key)}
-                >
-                  {character.name}
-                </div>
-              )
-            )}
+      {locations.length < 4 ? (
+        <div className="loading">Loading...</div>
+      ) : (
+        <div className="main-container">
+          <div className="timer">
+            {format(time.h)}:{format(time.m)}:{format(time.s)}
           </div>
-        ) : null}
-      </div>
+          <img
+            className="main-image"
+            width="100%"
+            src={image}
+            onClick={registerClick}
+          />
+          {menu ? (
+            <div
+              className="menu"
+              style={{
+                position: "absolute",
+                top: `${coords[1] + 16}px`,
+                left: `${coords[0] + 16}px`,
+              }}
+            >
+              {characters.map((character) =>
+                found.includes(character.key) ? null : (
+                  <div
+                    key={character.key}
+                    className="menu-item"
+                    onClick={(e) => registerGuess(e, character.key)}
+                  >
+                    {character.name}
+                  </div>
+                )
+              )}
+            </div>
+          ) : null}
+        </div>
+      )}
       {end ? (
         <Overlay levelKey={levelKey} score={time} format={format} />
       ) : null}
