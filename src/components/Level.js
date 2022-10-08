@@ -92,13 +92,15 @@ const Level = ({ characters, image, levelKey }) => {
 
   return (
     <div>
-      <ToastContainer
-        limit={1}
-        position="top-center"
-        autoClose={1500}
-        theme="dark"
-        newestOnTop
-      />
+      {end ? null : (
+        <ToastContainer
+          limit={1}
+          position="top-center"
+          autoClose={1500}
+          theme="dark"
+          newestOnTop
+        />
+      )}
       <div className="nav-bar">
         <div className="nav-name">
           <a href="/">Out Of Sight</a>
@@ -154,9 +156,7 @@ const Level = ({ characters, image, levelKey }) => {
           ) : null}
         </div>
       )}
-      {end ? (
-        <Overlay levelKey={levelKey} score={time} format={format} />
-      ) : null}
+      {end ? <Overlay levelKey={levelKey} score={time} /> : null}
     </div>
   );
 };
