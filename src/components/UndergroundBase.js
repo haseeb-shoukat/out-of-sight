@@ -12,6 +12,12 @@ const characters = [
   { key: "78672bfb22ba4cac99a949ff88a508e4", name: "Saitama", img: saitama },
 ];
 
-const UndergroundBase = <Level characters={characters} image={Underground} />;
+const UndergroundBase = (
+  <Level
+    levelKey={"4d37250101a049be94bd237d73515d5b"}
+    characters={characters}
+    image={Underground}
+  />
+);
 
 export default UndergroundBase;

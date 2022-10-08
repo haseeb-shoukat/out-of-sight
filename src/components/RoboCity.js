@@ -12,6 +12,12 @@ const characters = [
   { key: "faa9678449b14a24a2a22ad5d7bdd24e", name: "Mojo", img: mojo },
 ];
 
-const RoboCity = <Level characters={characters} image={Robo} />;
+const RoboCity = (
+  <Level
+    levelKey={"0afb4c16fdd0467d871d3e0936b84658"}
+    characters={characters}
+    image={Robo}
+  />
+);
 
 export default RoboCity;

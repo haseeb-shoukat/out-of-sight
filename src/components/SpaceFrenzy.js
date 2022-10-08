@@ -16,6 +16,12 @@ const characters = [
   { key: "5eb736d1677845818ffc0fce441c9432", name: "Lara Croft", img: lara },
 ];
 
-const SpaceFrenzy = <Level characters={characters} image={Space} />;
+const SpaceFrenzy = (
+  <Level
+    levelKey={"80b85439fb834d44a978917f1dbefcdd"}
+    characters={characters}
+    image={Space}
+  />
+);
 
 export default SpaceFrenzy;

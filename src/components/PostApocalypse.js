@@ -16,6 +16,12 @@ const characters = [
   { key: "e1344323aa594563b132fd7bbd126cef", name: "Patrick", img: patrick },
 ];
 
-const PostApocalypse = <Level characters={characters} image={Post} />;
+const PostApocalypse = (
+  <Level
+    levelKey={"d8e4541860bf4196bcffcacfd53896e8"}
+    characters={characters}
+    image={Post}
+  />
+);
 
 export default PostApocalypse;
