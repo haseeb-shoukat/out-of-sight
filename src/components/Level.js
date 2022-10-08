@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import db from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
@@ -9,6 +9,32 @@ const Level = ({ characters, image }) => {
   const [coords, setCoords] = useState([0, 0]);
   const [imageCoords, setImageCoords] = useState([0, 0]);
   const [found, updateFound] = useState([]);
+  const [time, setTime] = useState({ h: 0, m: 0, s: 0 });
+
+  useEffect(() => {
+    const tick = () => {
+      setTime(({ h, m, s }) => {
+        if (s >= 59) {
+          if (m >= 59) {
+            return { h: h + 1, m: 0, s: 0 };
+          } else return { h, m: m + 1, s: 0 };
+        } else return { h, m, s: s + 1 };
+      });
+    };
+
+    const interval = setInterval(tick, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
+  const format = (n) => {
+    return n.toLocaleString("en-US", {
+      minimumIntegerDigits: 2,
+      useGrouping: false,
+    });
+  };
 
   const registerClick = (e) => {
     const rect = e.target.getBoundingClientRect();
@@ -73,6 +99,9 @@ const Level = ({ characters, image }) => {
         </div>
       </div>
       <div className="main-container">
+        <div className="timer">
+          {format(time.h)}:{format(time.m)}:{format(time.s)}
+        </div>
         <img
           className="main-image"
           width="100%"
