@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import RoboCity from "./RoboCity";
 import PostApocalypse from "./PostApocalypse";
