@@ -7,7 +7,7 @@ import SpaceFrenzy from "./SpaceFrenzy";
 
 const RouteSwitch = () => {
   return (
-    <HashRouter>
+    <HashRouter basename="/">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/robo-city" element={RoboCity} />
