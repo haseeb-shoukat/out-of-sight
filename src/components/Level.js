@@ -3,6 +3,7 @@ import { doc, getDoc } from "firebase/firestore";
 import db from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
 import Overlay from "./Overlay";
 
 const Level = ({ characters, image, levelKey }) => {
@@ -103,7 +104,7 @@ const Level = ({ characters, image, levelKey }) => {
       )}
       <div className="nav-bar">
         <div className="nav-name">
-          <a href="/">Out Of Sight</a>
+          <Link to="/">Out Of Sight</Link>
         </div>
 
         <div className="characters">
