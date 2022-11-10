@@ -2,6 +2,7 @@ import post from "../images/post/post-apocalypse.jpg";
 import robo from "../images/robo/robo-city.jpg";
 import space from "../images/space/space.jpg";
 import underground from "../images/underground/underground-base.jpg";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -17,30 +18,30 @@ const Home = () => {
         </svg>
       </div>
       <div className="levels">
-        <a href="/robo-city">
+        <Link to="/robo-city">
           <div className="level-card">
             <img src={robo} className="level-img" />
             <div className="level-name">Robo City</div>
           </div>
-        </a>
-        <a href="/post-apocalypse">
+        </Link>
+        <Link to="/post-apocalypse">
           <div className="level-card">
             <img src={post} className="level-img" />
             <div className="level-name">Post Apocalypse</div>
           </div>
-        </a>
-        <a href="/underground-base">
+        </Link>
+        <Link to="/underground-base">
           <div className="level-card">
             <img src={underground} className="level-img" />
             <div className="level-name">Underground Base</div>
           </div>
-        </a>
-        <a href="/space-frenzy">
+        </Link>
+        <Link to="/space-frenzy">
           <div className="level-card">
             <img src={space} className="level-img" />
             <div className="level-name">Space Frenzy</div>
           </div>
-        </a>
+        </Link>
       </div>
     </div>
   );
